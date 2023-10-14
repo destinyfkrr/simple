@@ -47,7 +47,7 @@ Then We enumerated the Port 80 by using a web browser and found a Web Page :
 
 Upon Looking further, we were able to find the version and the CMS name and a publisher name of the site that might be useful later :
 
-![Webpage End](webpageend.PNG)
+![Webpage End](webpage end.PNG)
 
 # Foothold
 We initiated a Google search to explore potential exploits for GetSimpleCMS Version 3.3.16. Our efforts yielded a critical vulnerability within the CMS that enables attackers to achieve Remote Code Execution (RCE) on the target machine. This discovery marks a significant point of entry for attackers looking to compromise the system.
