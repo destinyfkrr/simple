@@ -47,7 +47,7 @@ Then We enumerated the Port 80 by using a web browser and found a Web Page :
 
 Upon Looking further, we were able to find the version and the CMS name and a publisher name of the site that might be useful later :
 
-![[webpage end.PNG]]
+![Webpage End](webpageend.PNG)
 
 # Foothold
 We initiated a Google search to explore potential exploits for GetSimpleCMS Version 3.3.16. Our efforts yielded a critical vulnerability within the CMS that enables attackers to achieve Remote Code Execution (RCE) on the target machine. This discovery marks a significant point of entry for attackers looking to compromise the system.
@@ -260,7 +260,7 @@ www-data@simple:/tmp$ ./linpeas.sh
 
 During our privilege escalation efforts, a significant discovery was made. We identified the presence of a MySQL service running on the target system, and to our surprise, it was accessible without any password protection. This security oversight allowed any user with internal access to the machine to connect to the MySQL service without the need for credentials, exposing potential avenues for further exploration and lateral movement within the system:
 
-![[mysql.PNG]]
+![MySQL](mysql.PNG)
 
 As part of our enumeration process, we delved into the MySQL database on the target system. Through meticulous investigation, we successfully retrieved the password associated with a user named 'getsimpleuser.' This crucial credential acquisition opened up further possibilities for exploitation and lateral movement, as we gained access to the 'getsimpleuser' account :
 
@@ -321,7 +321,7 @@ mysql>
 
 While conducting a thorough system analysis, we explored the '/etc/passwd' file and made a significant discovery. We identified the existence of a user account named 'simpleuser' on the target machine. This finding provided us with valuable information about additional user accounts, potentially expanding our avenues for further exploitation and lateral movement within the system:
 
-![[etcpass.PNG]]
+![etc/passwd](etcpass.PNG)
 
 Building upon our previous discoveries, we leveraged the password we acquired from the MySQL database to gain unauthorized access to the 'getsimple' user account. This successful login allowed us to assume the identity of 'getsimple' and further advance our penetration efforts, increasing our control over the compromised system:
 
@@ -374,7 +374,7 @@ simpleuser@simple:~$
 
 We executed Linpeas again and found that there is a cronjob running by 'root' every minute :
 
-![[linpeaspriv.PNG]]
+![Linpeas Privileges](linpeaspriv.PNG)
 
 We conducted a thorough examination of the 'backup.sh' file and uncovered a critical security flaw within its code. This script is responsible for archiving everything in the current directory into a '.tgz' file. However, the noteworthy detail here is the presence of an asterisk * at the end of the code. This seemingly innocuous wildcard character can be strategically exploited using a technique known as wildcard injection, providing attackers with a means to escalate privileges within the system.
 
@@ -396,5 +396,6 @@ simpleuser@simple:~
 
 Taking advantage of the identified vulnerabilities, we strategically set up a listener using netcat (nc) to establish a covert communication channel with the target system. This method allowed us to execute commands and ultimately gain a root-level shell, thereby achieving full control over the compromised system. :
 
-![[root.PNG]]
+![Root](root.PNG)
+
 
