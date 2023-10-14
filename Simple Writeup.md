@@ -43,7 +43,7 @@ Nmap done: 1 IP address (1 host up) scanned in 8.50 seconds
 
 Then We enumerated the Port 80 by using a web browser and found a Web Page :
 
-![[Webpagestart.PNG]]
+![Webpage Start](Webpagestart.PNG)
 
 Upon Looking further, we were able to find the version and the CMS name and a publisher name of the site that might be useful later :
 
